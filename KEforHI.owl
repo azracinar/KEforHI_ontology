@@ -1,0 +1,991 @@
+@prefix : <http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#> .
+@prefix dbo: <http://dbpedia.org/ontology/> .
+@prefix owl: <http://www.w3.org/2002/07/owl#> .
+@prefix rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#> .
+@prefix ros: <http://www.ease-crc.org/ont/ROS.owl#> .
+@prefix xml: <http://www.w3.org/XML/1998/namespace> .
+@prefix xsd: <http://www.w3.org/2001/XMLSchema#> .
+@prefix gufo: <http://purl.org/nemo/gufo#> .
+@prefix kehi: <http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#> .
+@prefix rdfs: <http://www.w3.org/2000/01/rdf-schema#> .
+@prefix PersonasOnto: <http://blankdots.com/open/personasonto.owl> .
+@base <http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI> .
+
+<http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI> rdf:type owl:Ontology ;
+                                                               rdfs:comment "This is an ontology about Knowledge Engineering for Hybrid Intelligence."@en .
+
+#################################################################
+#    Object Properties
+#################################################################
+
+###  http://blankdots.com/open/personasonto.owl#hasContext
+<http://blankdots.com/open/personasonto.owl#hasContext> rdf:type owl:ObjectProperty ;
+                                                        owl:equivalentProperty kehi:context .
+
+
+###  http://blankdots.com/open/personasonto.owl#hasEndGoal
+<http://blankdots.com/open/personasonto.owl#hasEndGoal> rdf:type owl:ObjectProperty ;
+                                                        owl:equivalentProperty kehi:endgoal .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#capability
+kehi:capability rdf:type owl:ObjectProperty ;
+                rdfs:domain kehi:Actor ;
+                rdfs:range kehi:Capability .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#context
+kehi:context rdf:type owl:ObjectProperty ;
+             rdfs:domain kehi:HI_Scenario ;
+             rdfs:range kehi:Context .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#domain
+kehi:domain rdf:type owl:ObjectProperty ;
+            rdfs:domain kehi:HI_Scenario ;
+            rdfs:range kehi:Domain .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#endgoal
+kehi:endgoal rdf:type owl:ObjectProperty ;
+             rdfs:domain kehi:HI_Scenario ;
+             rdfs:range kehi:Endgoal .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#has_ethical_consideration
+kehi:has_ethical_consideration rdf:type owl:ObjectProperty ;
+                               rdfs:domain kehi:HI_Scenario ;
+                               rdfs:range kehi:Ethical_Consideration .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#in_scenario
+kehi:in_scenario rdf:type owl:ObjectProperty ;
+                 rdfs:domain kehi:HI_Scenario ;
+                 rdfs:range kehi:Actor .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#interacting_agent
+kehi:interacting_agent rdf:type owl:ObjectProperty ;
+                       rdfs:domain kehi:Interaction ;
+                       rdfs:range kehi:Actor .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#interaction_method
+kehi:interaction_method rdf:type owl:ObjectProperty ;
+                        rdfs:domain kehi:Interaction ;
+                        rdfs:range kehi:InteractionMethod .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#interaction_task
+kehi:interaction_task rdf:type owl:ObjectProperty ;
+                      rdfs:subPropertyOf owl:topObjectProperty ;
+                      rdfs:domain kehi:Interaction ;
+                      rdfs:range kehi:InteractionTask .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#processing_information
+kehi:processing_information rdf:type owl:ObjectProperty ;
+                            rdfs:subPropertyOf owl:topObjectProperty ;
+                            rdfs:domain kehi:Actor ;
+                            rdfs:range kehi:InformationProcessing .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#processing_method
+kehi:processing_method rdf:type owl:ObjectProperty ;
+                       rdfs:subPropertyOf kehi:processing_information ;
+                       rdfs:domain kehi:InformationProcessing ;
+                       rdfs:range kehi:ProcessingMethod .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#processing_task
+kehi:processing_task rdf:type owl:ObjectProperty ;
+                     rdfs:subPropertyOf kehi:processing_information ;
+                     rdfs:domain kehi:InformationProcessing ;
+                     rdfs:range kehi:ProcessingTask .
+
+
+#################################################################
+#    Classes
+#################################################################
+
+###  http://blankdots.com/open/personasonto.owl#Context
+<http://blankdots.com/open/personasonto.owl#Context> rdf:type owl:Class ;
+                                                     owl:equivalentClass kehi:Context .
+
+
+###  http://blankdots.com/open/personasonto.owl#Goals
+<http://blankdots.com/open/personasonto.owl#Goals> rdf:type owl:Class ;
+                                                   owl:equivalentClass kehi:Endgoal .
+
+
+###  http://blankdots.com/open/personasonto.owl#Scenario
+<http://blankdots.com/open/personasonto.owl#Scenario> rdf:type owl:Class ;
+                                                      owl:equivalentClass kehi:HI_Scenario .
+
+
+###  http://dbpedia.org/ontology/Agent
+dbo:Agent rdf:type owl:Class ;
+          owl:equivalentClass kehi:Actor .
+
+
+###  http://dbpedia.org/ontology/Person
+dbo:Person rdf:type owl:Class ;
+           owl:equivalentClass kehi:Human_Agent .
+
+
+###  http://purl.org/nemo/gufo#Action
+gufo:Action rdf:type owl:Class ;
+            owl:equivalentClass kehi:InteractionMethod .
+
+
+###  http://purl.org/nemo/gufo#Atomic_Action
+gufo:Atomic_Action rdf:type owl:Class ;
+                   owl:equivalentClass ros:Unilateral ;
+                   rdfs:subClassOf gufo:Action .
+
+
+###  http://purl.org/nemo/gufo#Complex_Action
+gufo:Complex_Action rdf:type owl:Class ;
+                    owl:equivalentClass ros:Multilateral ;
+                    rdfs:subClassOf gufo:Action .
+
+
+###  http://www.ease-crc.org/ont/ROS.owl#Capability
+ros:Capability rdf:type owl:Class ;
+               owl:equivalentClass kehi:Capability .
+
+
+###  http://www.ease-crc.org/ont/ROS.owl#Message
+ros:Message rdf:type owl:Class ;
+            owl:equivalentClass kehi:Interaction .
+
+
+###  http://www.ease-crc.org/ont/ROS.owl#Multilateral
+ros:Multilateral rdf:type owl:Class ;
+                 rdfs:subClassOf kehi:InteractionMethod .
+
+
+###  http://www.ease-crc.org/ont/ROS.owl#Unilateral
+ros:Unilateral rdf:type owl:Class ;
+               rdfs:subClassOf kehi:InteractionMethod .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Actor
+kehi:Actor rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Adaptiveness
+kehi:Adaptiveness rdf:type owl:Class ;
+                  rdfs:subClassOf kehi:Capability .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Artificial_Agent
+kehi:Artificial_Agent rdf:type owl:Class ;
+                      rdfs:subClassOf kehi:Actor .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#BDI
+kehi:BDI rdf:type owl:Class ;
+         rdfs:subClassOf kehi:Capability .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Capability
+kehi:Capability rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Collaborativeness
+kehi:Collaborativeness rdf:type owl:Class ;
+                       rdfs:subClassOf kehi:Capability .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Context
+kehi:Context rdf:type owl:Class ;
+             rdfs:subClassOf kehi:HI_Scenario .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Domain
+kehi:Domain rdf:type owl:Class ;
+            rdfs:subClassOf kehi:HI_Scenario .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Endgoal
+kehi:Endgoal rdf:type owl:Class ;
+             rdfs:subClassOf kehi:HI_Scenario .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Ethical_Consideration
+kehi:Ethical_Consideration rdf:type owl:Class ;
+                           rdfs:subClassOf kehi:HI_Scenario .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Explainability
+kehi:Explainability rdf:type owl:Class ;
+                    rdfs:subClassOf kehi:InteractionTask .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Generating
+kehi:Generating rdf:type owl:Class ;
+                rdfs:subClassOf kehi:ProcessingTask .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#HI_Scenario
+kehi:HI_Scenario rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Human_Agent
+kehi:Human_Agent rdf:type owl:Class ;
+                 rdfs:subClassOf kehi:Actor .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#InformationProcessing
+kehi:InformationProcessing rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Interaction
+kehi:Interaction rdf:type owl:Class .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#InteractionMethod
+kehi:InteractionMethod rdf:type owl:Class ;
+                       rdfs:subClassOf kehi:Interaction .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#InteractionTask
+kehi:InteractionTask rdf:type owl:Class ;
+                     rdfs:subClassOf kehi:Interaction .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Learning
+kehi:Learning rdf:type owl:Class ;
+              rdfs:subClassOf kehi:ProcessingTask .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#ProcessingMethod
+kehi:ProcessingMethod rdf:type owl:Class ;
+                      rdfs:subClassOf kehi:InformationProcessing .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#ProcessingTask
+kehi:ProcessingTask rdf:type owl:Class ;
+                    rdfs:subClassOf kehi:InformationProcessing .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Question-Answering
+kehi:Question-Answering rdf:type owl:Class ;
+                        rdfs:subClassOf kehi:InteractionTask .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Reasoning
+kehi:Reasoning rdf:type owl:Class ;
+               rdfs:subClassOf kehi:ProcessingTask .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Recommendation
+kehi:Recommendation rdf:type owl:Class ;
+                    rdfs:subClassOf kehi:InteractionTask .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Responsibility
+kehi:Responsibility rdf:type owl:Class ;
+                    rdfs:subClassOf kehi:Capability .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Transforming
+kehi:Transforming rdf:type owl:Class ;
+                  rdfs:subClassOf kehi:ProcessingTask .
+
+
+#################################################################
+#    Individuals
+#################################################################
+
+###  http://www.ease-crc.org/ont/ROS.owl#Agreeing_on_a_decision
+ros:Agreeing_on_a_decision rdf:type owl:NamedIndividual .
+
+
+###  http://www.ease-crc.org/ont/ROS.owl#Read
+ros:Read rdf:type owl:NamedIndividual ,
+                  ros:Message .
+
+
+###  http://www.ease-crc.org/ont/ROS.owl#Write
+ros:Write rdf:type owl:NamedIndividual ,
+                   ros:Message .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#AI_agent_to_extract_a_set_of_key_arguments_from_a_textual_opinion_corpus
+kehi:AI_agent_to_extract_a_set_of_key_arguments_from_a_textual_opinion_corpus rdf:type owl:NamedIndividual ,
+                                                                                       kehi:Endgoal .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#AI_agent_to_learn_and_develop_the_concept_of_trust
+kehi:AI_agent_to_learn_and_develop_the_concept_of_trust rdf:type owl:NamedIndividual ,
+                                                                 kehi:Endgoal .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Abstracting_theory_of_mind_via_heuristics
+kehi:Abstracting_theory_of_mind_via_heuristics rdf:type owl:NamedIndividual ,
+                                                        kehi:HI_Scenario .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Adult
+kehi:Adult rdf:type owl:NamedIndividual ,
+                    kehi:Human_Agent .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Advising
+kehi:Advising rdf:type owl:NamedIndividual ,
+                       kehi:Recommendation .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Agent_doctor
+kehi:Agent_doctor rdf:type owl:NamedIndividual ,
+                           kehi:Artificial_Agent .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Analyze_feedback
+kehi:Analyze_feedback rdf:type owl:NamedIndividual ,
+                               kehi:HI_Scenario .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Analyzing
+kehi:Analyzing rdf:type owl:NamedIndividual ,
+                        kehi:Reasoning .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Annotation
+kehi:Annotation rdf:type owl:NamedIndividual ,
+                         kehi:Reasoning .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Anonymous_system
+kehi:Anonymous_system rdf:type owl:NamedIndividual ,
+                               kehi:Artificial_Agent .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Argument_extraction
+kehi:Argument_extraction rdf:type owl:NamedIndividual ,
+                                  kehi:Context .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Argument_mining
+kehi:Argument_mining rdf:type owl:NamedIndividual ,
+                              kehi:Reasoning .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Ask_and_answer_contextual_questions
+kehi:Ask_and_answer_contextual_questions rdf:type owl:NamedIndividual ,
+                                                  kehi:Endgoal .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Assessing
+kehi:Assessing rdf:type owl:NamedIndividual ,
+                        kehi:BDI .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Auditing
+kehi:Auditing rdf:type owl:NamedIndividual ,
+                       kehi:Generating .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Breaking_down_the_arguments
+kehi:Breaking_down_the_arguments rdf:type owl:NamedIndividual ,
+                                          kehi:Adaptiveness .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Case-based_reasoning
+kehi:Case-based_reasoning rdf:type owl:NamedIndividual ,
+                                   kehi:Reasoning .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Child
+kehi:Child rdf:type owl:NamedIndividual ,
+                    kehi:Human_Agent .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Clinician
+kehi:Clinician rdf:type owl:NamedIndividual ,
+                        kehi:Human_Agent .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Collaboration-based
+kehi:Collaboration-based rdf:type owl:NamedIndividual ,
+                                  ros:Unilateral .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Collecting_feedback
+kehi:Collecting_feedback rdf:type owl:NamedIndividual ,
+                                  kehi:Generating .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Collective_decision-making
+kehi:Collective_decision-making rdf:type owl:NamedIndividual ,
+                                         kehi:BDI .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Communicative
+kehi:Communicative rdf:type owl:NamedIndividual ,
+                            kehi:Context .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Computational_agent_doctor_to_cooperate_with_surgeons_in_operations
+kehi:Computational_agent_doctor_to_cooperate_with_surgeons_in_operations rdf:type owl:NamedIndividual ,
+                                                                                  kehi:Endgoal .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Computational_theory_of_mind
+kehi:Computational_theory_of_mind rdf:type owl:NamedIndividual ,
+                                           kehi:Adaptiveness .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Consolidation
+kehi:Consolidation rdf:type owl:NamedIndividual ,
+                            kehi:Reasoning .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Consulting
+kehi:Consulting rdf:type owl:NamedIndividual ,
+                         kehi:Recommendation .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Continual_monitoring
+kehi:Continual_monitoring rdf:type owl:NamedIndividual ,
+                                   kehi:Learning .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Contribution-based
+kehi:Contribution-based rdf:type owl:NamedIndividual ,
+                                 ros:Unilateral .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Create_more_effective_communication
+kehi:Create_more_effective_communication rdf:type owl:NamedIndividual ,
+                                                  kehi:Endgoal .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Debator
+kehi:Debator rdf:type owl:NamedIndividual ,
+                      kehi:Human_Agent .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Decision-making_under_stress
+kehi:Decision-making_under_stress rdf:type owl:NamedIndividual ,
+                                           kehi:Endgoal .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Deliberative_and_reactive_intelligence
+kehi:Deliberative_and_reactive_intelligence rdf:type owl:NamedIndividual ,
+                                                     kehi:Adaptiveness .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Designer
+kehi:Designer rdf:type owl:NamedIndividual ,
+                       kehi:Human_Agent .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Detect_unknown_objects
+kehi:Detect_unknown_objects rdf:type owl:NamedIndividual ,
+                                     kehi:Endgoal .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Developing_trust_with_clinicians
+kehi:Developing_trust_with_clinicians rdf:type owl:NamedIndividual ,
+                                               kehi:HI_Scenario .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Dialog
+kehi:Dialog rdf:type owl:NamedIndividual ,
+                     kehi:Question-Answering .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Displaying_a_set_of_experiences_and_training
+kehi:Displaying_a_set_of_experiences_and_training rdf:type owl:NamedIndividual ,
+                                                           kehi:Adaptiveness .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Elderly_lady
+kehi:Elderly_lady rdf:type owl:NamedIndividual ,
+                           kehi:Human_Agent .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Emergency_scenarios
+kehi:Emergency_scenarios rdf:type owl:NamedIndividual ,
+                                  kehi:HI_Scenario .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Estimating
+kehi:Estimating rdf:type owl:NamedIndividual ,
+                         kehi:Adaptiveness .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Ethical_robot_Stewards
+kehi:Ethical_robot_Stewards rdf:type owl:NamedIndividual ,
+                                     kehi:HI_Scenario .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Extracting_arguments_from_opinionated_texts
+kehi:Extracting_arguments_from_opinionated_texts rdf:type owl:NamedIndividual ,
+                                                          kehi:HI_Scenario .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Fairness
+kehi:Fairness rdf:type owl:NamedIndividual ,
+                       kehi:Ethical_Consideration .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Federated_learning
+kehi:Federated_learning rdf:type owl:NamedIndividual ,
+                                 kehi:Learning .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Firefighter
+kehi:Firefighter rdf:type owl:NamedIndividual ,
+                          kehi:Human_Agent .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Formulating_appropriate_regulations
+kehi:Formulating_appropriate_regulations rdf:type owl:NamedIndividual ,
+                                                  kehi:Adaptiveness .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Fortiori_reasoning
+kehi:Fortiori_reasoning rdf:type owl:NamedIndividual ,
+                                 kehi:Reasoning .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Future_decision-making_from_precedential_constraints
+kehi:Future_decision-making_from_precedential_constraints rdf:type owl:NamedIndividual ,
+                                                                   kehi:BDI .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Generalizability
+kehi:Generalizability rdf:type owl:NamedIndividual ,
+                               kehi:Adaptiveness .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Generating_key_points
+kehi:Generating_key_points rdf:type owl:NamedIndividual ,
+                                    kehi:Adaptiveness .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Generating_questions
+kehi:Generating_questions rdf:type owl:NamedIndividual ,
+                                   kehi:Question-Answering .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Human_doctor
+kehi:Human_doctor rdf:type owl:NamedIndividual ,
+                           kehi:Human_Agent .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Humanoid_robot_that_can_give_instructions
+kehi:Humanoid_robot_that_can_give_instructions rdf:type owl:NamedIndividual ,
+                                                        kehi:Endgoal .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Hybrid
+kehi:Hybrid rdf:type owl:NamedIndividual ,
+                     kehi:ProcessingMethod .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Improve_both_the_nature_of_conversation_and_performance_on_a_shared_goal_between_virtual_agents_and_humans
+kehi:Improve_both_the_nature_of_conversation_and_performance_on_a_shared_goal_between_virtual_agents_and_humans rdf:type owl:NamedIndividual ,
+                                                                                                                         kehi:Endgoal .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Initiating_and_developing_relationship
+kehi:Initiating_and_developing_relationship rdf:type owl:NamedIndividual ,
+                                                     kehi:Collaborativeness .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Intelligent_system
+kehi:Intelligent_system rdf:type owl:NamedIndividual ,
+                                 kehi:Artificial_Agent .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Interactive_learning_setting
+kehi:Interactive_learning_setting rdf:type owl:NamedIndividual ,
+                                           kehi:HI_Scenario .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Interactive_reasoning
+kehi:Interactive_reasoning rdf:type owl:NamedIndividual ,
+                                    kehi:Reasoning .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Law
+kehi:Law rdf:type owl:NamedIndividual ,
+                  kehi:Domain .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Learning
+kehi:Learning rdf:type owl:NamedIndividual ,
+                       kehi:Adaptiveness .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Learning_from_shared_experiences
+kehi:Learning_from_shared_experiences rdf:type owl:NamedIndividual ,
+                                               kehi:Learning .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Legal_considerations
+kehi:Legal_considerations rdf:type owl:NamedIndividual ,
+                                   kehi:Ethical_Consideration .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Making_choices
+kehi:Making_choices rdf:type owl:NamedIndividual ,
+                             kehi:BDI .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Measuring_bias
+kehi:Measuring_bias rdf:type owl:NamedIndividual ,
+                             kehi:Ethical_Consideration .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Medical
+kehi:Medical rdf:type owl:NamedIndividual ,
+                      kehi:Domain .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Medical_image_analysis
+kehi:Medical_image_analysis rdf:type owl:NamedIndividual ,
+                                     kehi:Endgoal .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Monitoring
+kehi:Monitoring rdf:type owl:NamedIndividual ,
+                         kehi:Responsibility .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Monitoring_model_fairness
+kehi:Monitoring_model_fairness rdf:type owl:NamedIndividual ,
+                                        kehi:HI_Scenario .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Moral_dilemmas
+kehi:Moral_dilemmas rdf:type owl:NamedIndividual ,
+                             kehi:Ethical_Consideration .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Multimodal
+kehi:Multimodal rdf:type owl:NamedIndividual ,
+                         ros:Unilateral .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Neuro_symbolic
+kehi:Neuro_symbolic rdf:type owl:NamedIndividual ,
+                             kehi:ProcessingMethod .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Non-cooperative
+kehi:Non-cooperative rdf:type owl:NamedIndividual ,
+                              ros:Unilateral .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Observing
+kehi:Observing rdf:type owl:NamedIndividual ,
+                        kehi:Learning .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Obtaining_computational_theory_of_mind
+kehi:Obtaining_computational_theory_of_mind rdf:type owl:NamedIndividual ,
+                                                     kehi:Endgoal .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Physical
+kehi:Physical rdf:type owl:NamedIndividual ,
+                       kehi:Context .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Policy
+kehi:Policy rdf:type owl:NamedIndividual ,
+                     kehi:Domain .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Policy-making
+kehi:Policy-making rdf:type owl:NamedIndividual ,
+                            kehi:Context .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Policy_maker
+kehi:Policy_maker rdf:type owl:NamedIndividual ,
+                           kehi:Human_Agent .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Predicting
+kehi:Predicting rdf:type owl:NamedIndividual ,
+                         kehi:Explainability .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Privacy
+kehi:Privacy rdf:type owl:NamedIndividual ,
+                      kehi:Ethical_Consideration .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Prosody
+kehi:Prosody rdf:type owl:NamedIndividual ,
+                      kehi:Context .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Providing_motivation
+kehi:Providing_motivation rdf:type owl:NamedIndividual ,
+                                   kehi:Adaptiveness .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Reasoning
+kehi:Reasoning rdf:type owl:NamedIndividual ,
+                        kehi:Adaptiveness .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Recognition-primed_decision-making
+kehi:Recognition-primed_decision-making rdf:type owl:NamedIndividual ,
+                                                 kehi:BDI .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Recognize_logical_inconsistency
+kehi:Recognize_logical_inconsistency rdf:type owl:NamedIndividual ,
+                                              kehi:Endgoal .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Reducing_questions
+kehi:Reducing_questions rdf:type owl:NamedIndividual ,
+                                 kehi:Question-Answering .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Reporting
+kehi:Reporting rdf:type owl:NamedIndividual ,
+                        kehi:Explainability .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Robot
+kehi:Robot rdf:type owl:NamedIndividual ,
+                    kehi:Artificial_Agent .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Robot_detecting_objects
+kehi:Robot_detecting_objects rdf:type owl:NamedIndividual ,
+                                      kehi:HI_Scenario .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Sharing_findings_and_knowledge
+kehi:Sharing_findings_and_knowledge rdf:type owl:NamedIndividual ,
+                                             kehi:Explainability .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Single-agent
+kehi:Single-agent rdf:type owl:NamedIndividual ,
+                           ros:Multilateral .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Social
+kehi:Social rdf:type owl:NamedIndividual ,
+                     kehi:Context .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Speech_activity
+kehi:Speech_activity rdf:type owl:NamedIndividual ,
+                              kehi:Context .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Statistical
+kehi:Statistical rdf:type owl:NamedIndividual ,
+                          kehi:ProcessingMethod .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Student
+kehi:Student rdf:type owl:NamedIndividual ,
+                      kehi:Human_Agent .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Support
+kehi:Support rdf:type owl:NamedIndividual ,
+                      kehi:Explainability .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Symbolic
+kehi:Symbolic rdf:type owl:NamedIndividual ,
+                       kehi:ProcessingMethod .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Tablet
+kehi:Tablet rdf:type owl:NamedIndividual ,
+                     kehi:Artificial_Agent .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Teacher
+kehi:Teacher rdf:type owl:NamedIndividual ,
+                      kehi:Human_Agent .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Teaching
+kehi:Teaching rdf:type owl:NamedIndividual ,
+                       kehi:Domain .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Teenagers_tutoring_one_another_in_algebra
+kehi:Teenagers_tutoring_one_another_in_algebra rdf:type owl:NamedIndividual ,
+                                                        kehi:HI_Scenario .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Theory_of_mind_agent
+kehi:Theory_of_mind_agent rdf:type owl:NamedIndividual ,
+                                   kehi:Artificial_Agent .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Theoy_of_mind
+kehi:Theoy_of_mind rdf:type owl:NamedIndividual ,
+                            kehi:Context .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Transparency
+kehi:Transparency rdf:type owl:NamedIndividual ,
+                           kehi:Responsibility .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Trust
+kehi:Trust rdf:type owl:NamedIndividual ,
+                    kehi:Context .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Tutee
+kehi:Tutee rdf:type owl:NamedIndividual ,
+                    kehi:Human_Agent .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Tutor
+kehi:Tutor rdf:type owl:NamedIndividual ,
+                    kehi:Human_Agent .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Understanding
+kehi:Understanding rdf:type owl:NamedIndividual ,
+                            kehi:Reasoning .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Understanding_a_cooking_recipe_with_human_language
+kehi:Understanding_a_cooking_recipe_with_human_language rdf:type owl:NamedIndividual ,
+                                                                 kehi:HI_Scenario .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Understanding_human_language
+kehi:Understanding_human_language rdf:type owl:NamedIndividual ,
+                                           kehi:Context .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#University_open_days
+kehi:University_open_days rdf:type owl:NamedIndividual ,
+                                   kehi:Context .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#User
+kehi:User rdf:type owl:NamedIndividual ,
+                   kehi:Human_Agent .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Virtual_agent
+kehi:Virtual_agent rdf:type owl:NamedIndividual ,
+                            kehi:Artificial_Agent .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Visual
+kehi:Visual rdf:type owl:NamedIndividual ,
+                     kehi:Context .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Warning
+kehi:Warning rdf:type owl:NamedIndividual ,
+                      kehi:Recommendation .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#making_choices
+kehi:making_choices rdf:type owl:NamedIndividual ,
+                             kehi:Explainability .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#providing_motivation
+kehi:providing_motivation rdf:type owl:NamedIndividual ,
+                                   kehi:Explainability .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#transparency
+kehi:transparency rdf:type owl:NamedIndividual ,
+                           kehi:Ethical_Consideration .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#(Personalized)_Communication
+<http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#(Personalized)_Communication> rdf:type owl:NamedIndividual ,
+                                                                                                    kehi:Collaborativeness .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#3-level_abstraction_procedure_(beliefs_and_knowledge,_abstractions,_theory_of_mind_states)
+<http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#3-level_abstraction_procedure_(beliefs_and_knowledge,_abstractions,_theory_of_mind_states)> rdf:type owl:NamedIndividual ,
+                                                                                                                                                                  kehi:Reasoning .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Agreeing_on_a_decision_(e.g._diagnosis)
+<http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Agreeing_on_a_decision_(e.g._diagnosis)> rdf:type owl:NamedIndividual ,
+                                                                                                               kehi:Explainability .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Assessing_each_other's_work
+<http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Assessing_each_other's_work> rdf:type owl:NamedIndividual ,
+                                                                                                   kehi:Explainability .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Determine_how_individual_and_relative_features_affect_rapport_between_tutor_and_tutee_(e.g._positive_impact_of_positive_facial_expressions)
+<http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Determine_how_individual_and_relative_features_affect_rapport_between_tutor_and_tutee_(e.g._positive_impact_of_positive_facial_expressions)> rdf:type owl:NamedIndividual ,
+                                                                                                                                                                                                                   kehi:Endgoal .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Developing_trust_(with_clinicians)
+<http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Developing_trust_(with_clinicians)> rdf:type owl:NamedIndividual ,
+                                                                                                          kehi:Responsibility .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Estimating_human's_intentions
+<http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Estimating_human's_intentions> rdf:type owl:NamedIndividual ,
+                                                                                                     kehi:HI_Scenario .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Estimating_humans'_value_preferences_to_pursue_value_alignment
+<http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Estimating_humans'_value_preferences_to_pursue_value_alignment> rdf:type owl:NamedIndividual ,
+                                                                                                                                      kehi:HI_Scenario .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Estimating_one's_value_preferences_from_one's_motivations_for_the_choice_(e.g._prioritizing_social_recognition_over_privacy)
+<http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Estimating_one's_value_preferences_from_one's_motivations_for_the_choice_(e.g._prioritizing_social_recognition_over_privacy)> rdf:type owl:NamedIndividual ,
+                                                                                                                                                                                                    kehi:Endgoal .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Imitating_other_robots'_reactions
+<http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Imitating_other_robots'_reactions> rdf:type owl:NamedIndividual ,
+                                                                                                         kehi:HI_Scenario .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Law_case_(e.g._landmark_cases)
+<http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Law_case_(e.g._landmark_cases)> rdf:type owl:NamedIndividual ,
+                                                                                                      kehi:HI_Scenario .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Social_norms,_roles,_and_values
+<http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Social_norms,_roles,_and_values> rdf:type owl:NamedIndividual ,
+                                                                                                       kehi:Ethical_Consideration .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Translating_(values_to_technical_requirements)
+<http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Translating_(values_to_technical_requirements)> rdf:type owl:NamedIndividual ,
+                                                                                                                      kehi:Generating .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Understanding_(human_behavior)
+<http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Understanding_(human_behavior)> rdf:type owl:NamedIndividual ,
+                                                                                                      kehi:Adaptiveness .
+
+
+###  http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Verifying_(value_alignment)
+<http://www.semanticweb.org/azracinar/ontologies/2024/4/KEHI#Verifying_(value_alignment)> rdf:type owl:NamedIndividual ,
+                                                                                                   kehi:Reasoning .
+
+
+###  Generated by the OWL API (version 4.5.9.2019-02-01T07:24:44Z) https://github.com/owlcs/owlapi
